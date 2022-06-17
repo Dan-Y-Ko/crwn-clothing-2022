@@ -5,9 +5,10 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 // use your own config
-// I used env but it's not necssary, just paste the config you get from firebase console
+// I used env but it's not necessary, just paste the config you get from firebase console
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "crown-clothing-2022-a2a8a.firebaseapp.com",
@@ -26,3 +27,15 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const db = getFirestore();
+
+export const createUserDocumentFromAuth = async (userAuth) => {
+  const userDocRef = doc(db, "users", userAuth.uid);
+
+  console.log(userDocRef);
+
+  const userSnapshot = await getDoc(userDocRef);
+  console.log(userSnapshot);
+  console.log(userSnapshot.exists());
+};
