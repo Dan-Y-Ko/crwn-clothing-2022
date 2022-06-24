@@ -1,13 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
-import "./sign-up-form.styles.scss";
+import { SignUpContainer } from "./sign-up-form.styles";
 
 const defaultFormFields = {
   displayName: "",
@@ -42,7 +43,7 @@ const SignUpForm = () => {
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        alert("cannot create user, email already in use");
+        alert("Cannot create user, email already in use");
       } else {
         console.log("user creation encountered an error", error);
       }
@@ -52,14 +53,11 @@ const SignUpForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormFields({
-      ...formFields,
-      [name]: value,
-    });
+    setFormFields({ ...formFields, [name]: value });
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -100,7 +98,7 @@ const SignUpForm = () => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 
