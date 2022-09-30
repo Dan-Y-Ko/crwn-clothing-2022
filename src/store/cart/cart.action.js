@@ -44,7 +44,7 @@ export const addItemToCart = (cartItems, productToAdd) => {
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
-export const removeItemToCart = (cartItems, cartItemToRemove) => {
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
   const newCartItems = removeCartItem(cartItems, cartItemToRemove);
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
