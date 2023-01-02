@@ -12,7 +12,11 @@ export type CategoryItem = {
 };
 
 export type Category = {
-  tite: string;
+  title: string;
   imageUrl: string;
   items: CategoryItem[];
+};
+
+export type CategoryMap = {
+  [key: string]: CategoryItem[];
 };
