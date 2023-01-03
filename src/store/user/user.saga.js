@@ -18,7 +18,7 @@ import {
   signInAuthUserWithEmailAndPassword,
   createAuthUserWithEmailAndPassword,
   signOutUser,
-} from "../../utils/firebase/firebase.utils";
+} from "../../utils/firebase/firebase.utils.ts";
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
   try {
